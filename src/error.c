@@ -37,6 +37,8 @@ void	error_map(int error_code)
 		perror("Error: This map is not compliant");
 	else if (error_code == 4)
 		perror("Error: Wrong map extension, Please use a map with the extension '.ber'");
+	else if (error_code == 5)
+		perror("Error: ");
 	exit(EXIT_FAILURE);
 }
 
