@@ -6,7 +6,7 @@
 /*   By: megadiou <megadiou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 15:09:10 by megadou           #+#    #+#             */
-/*   Updated: 2024/04/11 18:01:35 by megadiou         ###   ########.fr       */
+/*   Updated: 2024/04/22 15:52:48 by megadiou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	error_map(int error_code)
 	exit(EXIT_FAILURE);
 }
 
-void	mlx_error()
+void	error_mlx()
 {
 	perror(mlx_strerror(mlx_errno));
 	exit(EXIT_FAILURE);
