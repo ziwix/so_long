@@ -6,7 +6,7 @@
 /*   By: megadiou <megadiou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 15:03:15 by megadiou          #+#    #+#             */
-/*   Updated: 2024/04/11 16:20:13 by megadiou         ###   ########.fr       */
+/*   Updated: 2024/04/27 19:55:34 by megadiou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 // Everything is executed by this function.
 int	main(int ac, char *av[])
 {
-	int		errno;
 	t_map	*content;
 
 	if (ac != 2)
@@ -27,7 +26,6 @@ int	main(int ac, char *av[])
 	if (!content)
 		error(12);
 	content = main_map_checks(av[1], content);
-	
 	free_map(content->map);
 	free_map(content->map_copy);
 	free(content->elements);

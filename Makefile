@@ -1,6 +1,6 @@
 #Program related variables
 NAME= so_long
-CL= clang
+CL= gcc
 CFLAGS= -Wall -Wextra -Werror -gdwarf-4
 
 #Paths for libs
