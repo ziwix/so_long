@@ -6,7 +6,7 @@
 /*   By: megadiou <megadiou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 14:41:50 by megadiou          #+#    #+#             */
-/*   Updated: 2024/04/11 16:02:04 by megadiou         ###   ########.fr       */
+/*   Updated: 2024/05/04 02:10:25 by megadiou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,3 +25,9 @@ void	free_map(char **map)
 	}
 	free(map);
 }
+
+// void	free_error_map(t_map *content, int error_code)
+// {
+// 	free_map(content->map);
+// 	free(content);
+// }

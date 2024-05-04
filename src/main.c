@@ -6,7 +6,7 @@
 /*   By: megadiou <megadiou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 15:03:15 by megadiou          #+#    #+#             */
-/*   Updated: 2024/04/27 19:55:34 by megadiou         ###   ########.fr       */
+/*   Updated: 2024/05/04 03:09:39 by megadiou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,30 +16,51 @@
 // Everything is executed by this function.
 int	main(int ac, char *av[])
 {
-	t_map	*content;
+	t_content	*content;
 
-	if (ac != 2)
-		error(22);
-	if (ft_strstr(av[1], ".ber") == NULL)
-		error_map(4);
-	content = (t_map *)malloc(sizeof(t_map));
+	check_arguments(ac, av);
+	content = (t_content *)malloc(sizeof(t_content));
 	if (!content)
 		error(12);
-	content = main_map_checks(av[1], content);
-	free_map(content->map);
-	free_map(content->map_copy);
-	free(content->elements);
-	free(content);
+	content->map_content = main_map_checks(av[1], content);
+	if (!content->map_content)
+		free(content);
+	content = main_window_init(content);
 	return (0);
 }
 
 // This function perform a series of checks and operations on the map.
-t_map	*main_map_checks(char *path, t_map *content)
+t_map	*main_map_checks(char *path, t_content *content)
 {
-	content->map = map_init(path, content);
-	if (content->map == NULL)
+	content->map_content = (t_map *)malloc(sizeof(t_map));
+	if (!content->map_content)
+		error(12);
+	content->map_content->map = map_init(path, content->map_content);
+	if (content->map_content->map == NULL)
+	{
+		free(content->map_content);
+		free(content);
 		error_map(2);
-	content = map_checks(content);
-	content = flood_fill(content);
+	}
+	content->map_content = map_checks(content->map_content);
+	content->map_content = flood_fill(content->map_content);
+	return (content->map_content);
+}
+
+t_content	*main_window_init(t_content *content)
+{
+	content = mlx_content_init(content);
+	content->mlx_content->mlx = mlx_init(content->map_content->column * 64,
+			content->map_content->row * 64, "so_long", false);
+	if (!content->mlx_content->mlx)
+		error_mlx();
+	content->player_content = (t_player *)malloc(sizeof(t_player));
+	if (!content->player_content)
+		error(12);
+	content->player_content->moves = 0;
+	content = init_display(content);
+	mlx_key_hook(content->mlx_content->mlx, (void (*))mlx_hook, content);
+	mlx_loop(content->mlx_content->mlx);
+	mlx_terminate(content->mlx_content->mlx);
 	return (content);
 }

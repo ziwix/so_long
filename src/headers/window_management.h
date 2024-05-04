@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   graphic_management.c                               :+:      :+:    :+:   */
+/*   window_management.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: megadiou <megadiou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/11 17:43:27 by megadiou          #+#    #+#             */
-/*   Updated: 2024/04/30 02:28:07 by megadiou         ###   ########.fr       */
+/*   Created: 2024/05/04 02:29:38 by megadiou          #+#    #+#             */
+/*   Updated: 2024/05/04 03:24:30 by megadiou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "headers/graphic_management.h"
+#ifndef WINDOW_MANAGEMENT_H
+#define	WINDOW_MANAGEMENT_H
 
-void	window_init(t_map *content)
-{
-	mlx_t	*mlx;
+#include "so_long.h"
 
-	mlx = mlx_init(500, 500, "so_long", true);
-	if (!mlx)
-		error_mlx();
-	mlx_loop(mlx);
-	mlx_terminate(mlx);
-}
+t_content	*mlx_content_init(t_content *content);
+t_content	*init_display(t_content *content);
+void		place_images(t_content *content, int pos_x, int pos_y);
+mlx_image_t	*get_images(t_content *content, char *path, int pos_x, int pos_y);
+
+#endif

@@ -6,25 +6,25 @@
 /*   By: megadiou <megadiou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 16:33:22 by megadiou          #+#    #+#             */
-/*   Updated: 2024/04/11 15:58:02 by megadiou         ###   ########.fr       */
+/*   Updated: 2024/04/30 05:57:45 by megadiou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "headers/map_init.h"
 
 // Initialize the process to get the map.
-char	**map_init(char *path, t_map *content)
+char	**map_init(char *path, t_map *map_content)
 {
 	int		fd;
 	char	**map;
 
-	content->size_map = map_size(path);
-	if (content->size_map < 3)
+	map_content->size_map = map_size(path);
+	if (map_content->size_map < 3)
 		error_map(1);
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 		error(2);
-	map = get_map(fd, content->size_map);
+	map = get_map(fd, map_content->size_map);
 	close(fd);
 	return (map);
 }

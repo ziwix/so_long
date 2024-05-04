@@ -6,7 +6,7 @@
 /*   By: megadiou <megadiou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 07:23:36 by megadiou          #+#    #+#             */
-/*   Updated: 2024/04/11 14:51:02 by megadiou         ###   ########.fr       */
+/*   Updated: 2024/05/04 03:40:03 by megadiou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@
 # include "map_checks.h"
 # include "map_flood.h"
 # include "free.h"
+# include "window_management.h"
+# include "key_management.h"
 
-t_map	*main_map_checks(char *path, t_map *content);
+t_map	*main_map_checks(char *path, t_content *content);
+t_content	*main_window_init(t_content *content);
 
 #endif

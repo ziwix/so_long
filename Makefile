@@ -15,8 +15,9 @@ GNL_HEADER= get_next_line/get_next_line.h
 #Files
 HEADERS= $(GNL_HEADER) src/headers/so_long.h src/headers/structs.h src/headers/map_init.h \
 						src/headers/error.h src/headers/map_checks.h src/headers/map_flood.h \
-						src/headers/free.h
+						src/headers/free.h src/headers/window_management.h src/headers/key_management.h
 SRCS= $(GNL_SRC) src/map_init.c src/error.c src/main.c src/map_checks.c src/map_flood.c src/free.c \
+					src/window_management.c src/key_management.c
 					
 LIBMLX= $(MLX42)/build/libmlx42.a -ldl -lglfw -pthread -lm
 OBJS= ${SRCS:.c=.o}
